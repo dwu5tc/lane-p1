@@ -1,17 +1,65 @@
 import React, { Component } from 'react';
+import ImagePanel from './components/ImagePanel';
+import ActionsContainer from './containers/ActionsContainer';
 
 class App extends Component {
 	constructor() {
 		super();
 
 		this.state = {
-			hello: 'world'
+			rotateOn: false,
+			translateOn: false,
+			opacityOn: false,
+			scaleOn: false
 		};
 	}
 
+	uploadImage(e) {
+		e.preventDefault();
+		
+	}
+
+	toggleAction = (action) => {
+		this.setState((prevState) => {
+			[action]: !prevState[action] 
+		});
+	}
+
+	// toggleRotate = () => {
+	// 	this.setState((prevState) => {
+	// 		rotateOn: !prevState.rotateOn
+	// 	});
+	// }
+
+	// toggleTranslate = () => {
+	// 	this.setState((prevState) => {
+	// 		rotateOn: !prevState.translateOn
+	// 	});
+	// }
+
+	// toggleOpacity = () => {
+	// 	this.setState((prevState) => {
+	// 		rotateOn: !prevState.opacityOn
+	// 	});
+	// }
+
+	// toggleScale = () => {
+	// 	this.setState((prevState) => {
+	// 		rotateOn: !prevState.scaleOn
+	// 	});
+	// }
+
 	render() {
 		return (
-			<h1>Jello {this.state.hello}!!</h1>
+			<div className=''>
+				<ImagePanel />
+				<ActionsContainer 
+					handleRotate={this.toggleRotate}
+					handleTranslate={this.toggleTranslate}
+					handleOpacity={this.toggleOpacity}
+					handleScale={this.toggleScale}
+				/>
+			<div>
 		);
 	}
 }
